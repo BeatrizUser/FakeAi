@@ -12,7 +12,7 @@ body{
     z-index: 3;
     backdrop-filter: blur(8px);
 }
-#info{
+#infopessoais{
     display: grid;
 }
 h4{

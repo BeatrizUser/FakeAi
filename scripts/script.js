@@ -73,17 +73,16 @@ var questionario = [
         pergunta: () => "Essas são suas informações!",
         audio: () => `https://vaas108.cpqd.com.br/rest/v2/synthesize?text=${memoria.text2speech}&voice=carlos-highquality.voice`,
         exibicao: "infooption",
-        option: "Ok",
+        option1: "Ok",
         nextquestion: 5,
     },
     {
-        pergunta: () => "Não sei! Vou cantar!",
+        pergunta: () => "Esse video é muito Legal.",
         audio: () => `https://vaas108.cpqd.com.br/rest/v2/synthesize?text=${memoria.text2speech}&voice=carlos-highquality.voice`,
-        exibicao: "option",
-        option1: "Início",
-        option2: "Tchau",
-        nextquestion1: 0,
-        nextquestion2: 0,
+        exibicao: "video",
+        option1: "Voltar",
+        nextquestion1: 5,
+        urlvideo: "https://www.youtube.com/embed/cEItmb_a20M?controls=0",
     },
 ]
 
@@ -92,10 +91,6 @@ function seletor(question){
     $("#audio").html(`<audio hidden="True" controls="" autoplay="" name="media"><source src="${question.audio()}" type="audio/x-wav"></audio>`)
     if (question.exibicao == "input"){
         perguntainputtext(question)
-        return 0
-    }
-    if (question.exibicao == "video"){
-        perguntavideo(question)
         return 0
     }
     if (question.exibicao == "option"){
@@ -120,6 +115,10 @@ function seletor(question){
     }
     if (question.exibicao == "infooption"){
         perguntainfooption(question)
+        return 0
+    }
+    if (question.exibicao == "video"){
+        perguntavideooption(question)
         return 0
     }
     perguntaoption2(question)
@@ -235,12 +234,25 @@ function perguntaoption(question){
 }
 function perguntainfooption(question){
     $("#question").text(`${question.pergunta()}`)
-    $("#resposta").html(`
+    $("#resposta").html(``)
+    $("#infopessoais").html(`
     <h5>Nome:</h5><h4>${memoria.primeironome}</h4>
-    <h5>Sobrenome:</h5><h4>${memoria.text2speech}</h4>
-    <h5>CPF:</h5><h4>${memoria.text2speech}</h4>
-    <h5>Password:</h5><h4>${memoria.text2speech}</h4>
+    <h5>Sobrenome:</h5><h4>${memoria.segundonome}</h4>
+    <h5>CPF:</h5><h4>${memoria.numerocpf}</h4>
+    <h5>Password:</h5><h4>${memoria.senha}</h4>
+    <button class="btnresposta" id="ok">${question.option1}</button>
     `)
+    $("#ok").click(function(){
+        $("#infopessoais").html(``)
+        var idnext = question.nextquestion
+        encoderaudio(questionario[idnext])
+        seletor(questionario[idnext])
+    });
+}
+function perguntavideooption(question){
+    $("#question").text(`${question.pergunta()}`)
+    $("#resposta").html(`<button class="btnresposta" id="ok">${question.option1}</button>`)
+    $("#video").html(`<iframe width="560" height="315" src="${question.urlvideo}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`)
     $("#ok").click(function(){
         var idnext = question.nextquestion
         encoderaudio(questionario[idnext])
@@ -260,6 +272,3 @@ $( document ).ready(function() {
     encoderaudio(questionario[0])
     seletor(questionario[0])
   });
-
-
-  //   <iframe width="560" height="315" src="https://www.youtube.com/embed/cEItmb_a20M?controls=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
