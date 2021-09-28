@@ -25,7 +25,7 @@ var questionario = [
         nextquestion: 3,
     },
     {
-        pergunta: () => `Digite uma senha ${memoria.primeironome} ${memoria.segundonome}.`,
+        pergunta: () => `Digite uma senha.`,
         audio: () => `https://vaas108.cpqd.com.br/rest/v2/synthesize?text=${memoria.text2speech}&voice=carlos-highquality.voice`,
         exibicao: "inputpassword",
         nomedememoria: "senha",
@@ -42,7 +42,7 @@ var questionario = [
     // ATE AQUI DEUS AJUDOU!
 
     {
-        pergunta: () => `${memoria.primeironome}, aqui é você que manda!\nO que você quer fazer?`,
+        pergunta: () => `Aqui é você que manda!\nO que você quer fazer?`,
         audio: () => `https://vaas108.cpqd.com.br/rest/v2/synthesize?text=${memoria.text2speech}&voice=carlos-highquality.voice`,
         exibicao: "multioption",
         option1: "Ouvir Piada",
@@ -52,11 +52,11 @@ var questionario = [
     
         nextquestion1: 6,
         nextquestion2: 7,
-        nextquestion3: 6,
-        nextquestion4: 6,
+        nextquestion3: 8,
+        nextquestion4: 9,
     },
     {
-        pergunta: () => "Era uma vez um pintinho sem cu! Foi peidar e explodiu!",
+        pergunta: () => "Era uma vez um pintinho sem cu!\n Foi peidar e explodiu!",
         audio: () => `https://vaas108.cpqd.com.br/rest/v2/synthesize?text=${memoria.text2speech}&voice=carlos-highquality.voice`,
         exibicao: "onlyoption",
         option1: "Legal",
@@ -70,13 +70,11 @@ var questionario = [
         nextquestion: 5,
     },
     {
-        pergunta: () => "Voce quer ouvir uma piada ou um fato interessante?",
+        pergunta: () => "Essas são suas informações!",
         audio: () => `https://vaas108.cpqd.com.br/rest/v2/synthesize?text=${memoria.text2speech}&voice=carlos-highquality.voice`,
-        exibicao: "option",
-        option1: "Piada",
-        option2: "Fato interessante",
-        nextquestion1: 6,
-        nextquestion2: 8,
+        exibicao: "infooption",
+        option: "Ok",
+        nextquestion: 5,
     },
     {
         pergunta: () => "Não sei! Vou cantar!",
@@ -118,6 +116,10 @@ function seletor(question){
     }
     if (question.exibicao == "multioption"){
         perguntamultioption(question)
+        return 0
+    }
+    if (question.exibicao == "infooption"){
+        perguntainfooption(question)
         return 0
     }
     perguntaoption2(question)
@@ -227,6 +229,20 @@ function perguntaoption(question){
     });
     $("#nao").click(function(){
         var idnext = question.nextquestion2
+        encoderaudio(questionario[idnext])
+        seletor(questionario[idnext])
+    });
+}
+function perguntainfooption(question){
+    $("#question").text(`${question.pergunta()}`)
+    $("#resposta").html(`
+    <h5>Nome:</h5><h4>${memoria.primeironome}</h4>
+    <h5>Sobrenome:</h5><h4>${memoria.text2speech}</h4>
+    <h5>CPF:</h5><h4>${memoria.text2speech}</h4>
+    <h5>Password:</h5><h4>${memoria.text2speech}</h4>
+    `)
+    $("#ok").click(function(){
+        var idnext = question.nextquestion
         encoderaudio(questionario[idnext])
         seletor(questionario[idnext])
     });
