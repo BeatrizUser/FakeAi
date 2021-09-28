@@ -20,7 +20,7 @@ var questionario = [
     {
         pergunta: () => `Legal ${memoria.primeironome} ${memoria.segundonome}! qual é o seu CPF?`,
         audio: () => `https://vaas108.cpqd.com.br/rest/v2/synthesize?text=${memoria.text2speech}&voice=carlos-highquality.voice`,
-        exibicao: "input",
+        exibicao: "inputcpf",
         nomedememoria: "numerocpf",
         nextquestion: 3,
     },
@@ -40,7 +40,7 @@ var questionario = [
         nextquestion: 5,
     },
     // ATE AQUI DEUS AJUDOU!
-    
+
     {
         pergunta: () => `${memoria.primeironome}, aqui é você que manda!\nO que você quer fazer?`,
         audio: () => `https://vaas108.cpqd.com.br/rest/v2/synthesize?text=${memoria.text2speech}&voice=carlos-highquality.voice`,
@@ -110,6 +110,10 @@ function seletor(question){
         perguntainputpassword(question)
         return 0
     }
+    if (question.exibicao == "inputcpf"){
+        perguntainputcpf(question)
+        return 0
+    }
     perguntaoption2(question)
 }
 
@@ -160,6 +164,27 @@ function perguntainputpassword(question){
         memoria[nomechave] = senha
         encoderaudio(questionario[question.nextquestion])
         seletor(questionario[question.nextquestion])
+    });
+}
+function perguntainputcpf(question){
+    $("#question").text(`${question.pergunta()}`)
+    $("#resposta").html(`<input type="text" id="inputcpf" pattern="[0-9]{11}" placeholder="Insira seu CPF..."><button id="inputok">>></button>`)
+    $("#inputok").click(function(){
+        if (parseInt($("#inputcpf").val().length) == 11){
+            var part1 = $("#inputcpf").val().slice(0,3);
+            var part2 = $("#inputcpf").val().slice(3,6);
+            var part3 = $("#inputcpf").val().slice(6,9);
+            var part4 = $("#inputcpf").val().slice(9,11);
+            var formatcpf = `${part1}.${part2}.${part3}-${part4}`
+            
+            var cpf = formatcpf
+            var nomechave = question.nomedememoria
+            memoria[nomechave] = cpf
+            encoderaudio(questionario[question.nextquestion])
+            seletor(questionario[question.nextquestion])
+            return 0
+    }
+        alert("Digite 11 números!")
     });
 }
 
