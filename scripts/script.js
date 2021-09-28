@@ -81,7 +81,7 @@ var questionario = [
         audio: () => `https://vaas108.cpqd.com.br/rest/v2/synthesize?text=${memoria.text2speech}&voice=carlos-highquality.voice`,
         exibicao: "video",
         option1: "Voltar",
-        nextquestion1: 5,
+        nextquestion: 5,
         urlvideo: "https://www.youtube.com/embed/cEItmb_a20M?controls=0",
     },
 ]

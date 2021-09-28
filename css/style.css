@@ -12,6 +12,14 @@ body{
 footer{
     color: #e6e6e67a;
 }
+.text-center {
+    text-align: center!important;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    flex-direction: column;
+}
 .blur{
     z-index: 3;
     backdrop-filter: blur(8px);
@@ -29,10 +37,7 @@ h5{
     margin-top: 10px;
 }
 h6{
-    font-size: 12px;
-}
-.p-3 {
-    padding: 0px!important;
+    font-size: 10px;
 }
 .container{
     display: flex;
@@ -70,7 +75,7 @@ select:-webkit-autofill:focus {
   outline: 0px;
 }
 #question{
-    font-size: 3.5vh;
+    font-size: 2.8vh;
     color: #e6e6e6;
     font-weight: 300;
     text-shadow: #000 1px 2px 8px;
@@ -83,6 +88,8 @@ select:-webkit-autofill:focus {
 #resposta{
     display: flex;
     align-items: baseline;
+    flex-wrap: wrap;
+    justify-content: center;
 }
 button{
     background: #015c5f;
@@ -92,10 +99,11 @@ button{
     border: none;
     padding: 2px 10px 2px 10px;
     font-weight: 500;
-    margin-left: 25px;
+    margin-left: 10px;
+    margin-right: 10px;
     margin-bottom: 12px;
     box-shadow: 1px 2px 8px #000;
-    font-size: 18px;
+    font-size: 2.5vh;
     letter-spacing: 1px;
 }
 #inputok{
