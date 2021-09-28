@@ -123,17 +123,19 @@ function perguntainput(question){
 }
 function perguntaoption(question){
     $("#question").text(`${question.pergunta()}`)
-    $("#resposta").html(`<button id="sim">${question.option1}</button><button id="nao">${question.option2}</button>`)
+    $("#resposta").html(`<button id="sim" class=".btnresposta">${question.option1}</button><button id="nao" class=".btnresposta">${question.option2}</button>`)
     $("#sim").click(function(){
         var idnext = question.nextquestion1
-        exibirperguntaopcao(questionario[idnext])
+        encoderaudio(questionario[idnext])
+        seletor(questionario[idnext])
     });
     $("#nao").click(function(){
         var idnext = question.nextquestion2
-        exibirperguntaopcao(questionario[idnext])
+        encoderaudio(questionario[idnext])
+        seletor(questionario[idnext])
     });
 }
-// function encoderaudio(question){
+function encoderaudio(question){
     var texto = `${question.pergunta()}`
     var encoder = encodeURIComponent(texto);
     var audiochave = "text2speech"

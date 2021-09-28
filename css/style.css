@@ -39,8 +39,8 @@ input:focus-visible{
     text-align-last: center;
 
 }
-.btnresposta{
-    background: rgb(32, 32, 32);
+button{
+    background: #292929;
     color: #ffffff;
     min-width: 80px;
     border-radius: 4px 10px 4px 9px;
