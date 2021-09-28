@@ -49,27 +49,25 @@ var questionario = [
         option2: "Algo Interessante",
         option3: "Ver suas informações",
         option4: "Assistir um Video",
-        option5: "Algo Interessante",
+    
         nextquestion1: 6,
-        nextquestion2: 5,
+        nextquestion2: 7,
+        nextquestion3: 6,
+        nextquestion4: 6,
     },
     {
-        pergunta: () => "hey cadê meu guerreiro? Deixa eu te conta uma piada?",
+        pergunta: () => "Era uma vez um pintinho sem cu! Foi peidar e explodiu!",
         audio: () => `https://vaas108.cpqd.com.br/rest/v2/synthesize?text=${memoria.text2speech}&voice=carlos-highquality.voice`,
-        exibicao: "option",
-        option1: "Pode ser",
-        option2: "Quero não!",
-        nextquestion1: 7,
-        nextquestion2: 2,
+        exibicao: "onlyoption",
+        option1: "Legal",
+        nextquestion: 5,
     },
     {
-        pergunta: () => "Qual é o parente que nunca recusa um convite?",
+        pergunta: () => "Em cima das caravelas portuguesas existia uma pequena cesta por onde a tripulação observava o horizonte em busca de sinal de terra. Por causa do balanço do mar este local era muito instavel e balançava muito, fazendo com que fosse uma função que ninguem desejava, tornando-se quase um castigo. O nome dessa pequena cesta era 'caralho'.Por isso como forma de castigo mandamos alguem pro caralho!",
         audio: () => `https://vaas108.cpqd.com.br/rest/v2/synthesize?text=${memoria.text2speech}&voice=carlos-highquality.voice`,
-        exibicao: "option",
-        option1: "Outra",
-        option2: "Péssima",
-        nextquestion1: 6,
-        nextquestion2: 5,
+        exibicao: "onlyoption",
+        option1: "Legal",
+        nextquestion: 5,
     },
     {
         pergunta: () => "Voce quer ouvir uma piada ou um fato interessante?",
@@ -114,23 +112,60 @@ function seletor(question){
         perguntainputcpf(question)
         return 0
     }
+    if (question.exibicao == "onlyoption"){
+        perguntaonlyoption(question)
+        return 0
+    }
+    if (question.exibicao == "multioption"){
+        perguntamultioption(question)
+        return 0
+    }
     perguntaoption2(question)
 }
 
-
-
-
 // FUNCÕES DE CONSTRUÇÃO - EXIBI HTML DE ACORDO COM O TIPO DE INTERAÇÃO
-
+function perguntamultioption(question){
+    $("#question").text(`${question.pergunta()}`)
+    $("#resposta").html(`
+    <button class="btnresposta" id="piada">${question.option1}</button>
+    <button class="btnresposta" id="algoint">${question.option2}</button>
+    <button class="btnresposta" id="info">${question.option3}</button>
+    <button class="btnresposta" id="video">${question.option4}</button>
+    `)
+    $("#piada").click(function(){
+        var idnext = question.nextquestion1
+        perguntaoption2(questionario[idnext])
+        encoderaudio(questionario[idnext])
+        seletor(questionario[idnext])
+    });
+    $("#algoint").click(function(){
+        var idnext = question.nextquestion2
+        perguntaoption2(questionario[idnext])
+        encoderaudio(questionario[idnext])
+        seletor(questionario[idnext])
+    });
+    $("#info").click(function(){
+        var idnext = question.nextquestion3
+        perguntaoption2(questionario[idnext])
+        encoderaudio(questionario[idnext])
+        seletor(questionario[idnext])
+    });
+    $("#video").click(function(){
+        var idnext = question.nextquestion4
+        perguntaoption2(questionario[idnext])
+        encoderaudio(questionario[idnext])
+        seletor(questionario[idnext])
+    });
+}
 function perguntaonlyoption(question){
     $("#question").text(`${question.pergunta()}`)
     $("#resposta").html(`<button class="btnresposta" id="ok">${question.option1}</button>`)
     $("#ok").click(function(){
         var idnext = question.nextquestion
+        encoderaudio(questionario[idnext])
         seletor(questionario[idnext])
     });
 }
-
 function perguntaoption2(question){
     $("#question").text(`${question.pergunta()}`)
     $("#resposta").html(`<button class="btnresposta" id="sim">${question.option1}</button><button class="btnresposta" id="nao">${question.option2}</button>`)
@@ -143,7 +178,6 @@ function perguntaoption2(question){
         perguntaoption2(questionario[idnext])
     });
 }
-
 function perguntainputtext(question){
     $("#question").text(`${question.pergunta()}`)
     $("#resposta").html(`<input type="text" id="inputnome"><button id="inputok">>></button>`)
@@ -187,7 +221,6 @@ function perguntainputcpf(question){
         alert("Digite 11 números!")
     });
 }
-
 function perguntaoption(question){
     $("#question").text(`${question.pergunta()}`)
     $("#resposta").html(`<button id="sim" class=".btnresposta">${question.option1}</button><button id="nao" class=".btnresposta">${question.option2}</button>`)
@@ -202,10 +235,6 @@ function perguntaoption(question){
         seletor(questionario[idnext])
     });
 }
-
-
-
-
 // FUNÇÕES DE SELEÇÃO
 function encoderaudio(question){
     var texto = `${question.pergunta()}`
@@ -214,14 +243,11 @@ function encoderaudio(question){
     memoria[audiochave] = encoder
 
 }
-
-
-
-
 // READY!  QUANDO A PAGINA ABRE RODA AS SEGUINTES FUNCOES NA ORDEM DADA.
 $( document ).ready(function() {
     encoderaudio(questionario[0])
     seletor(questionario[0])
   });
 
-//   <iframe width="560" height="315" src="https://www.youtube.com/embed/cEItmb_a20M?controls=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+  //   <iframe width="560" height="315" src="https://www.youtube.com/embed/cEItmb_a20M?controls=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
