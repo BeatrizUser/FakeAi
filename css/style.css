@@ -7,6 +7,10 @@ body{
     display: flex;
     width: 100vw;
     height: 100vh;
+    flex-direction: column;
+}
+footer{
+    color: #e6e6e67a;
 }
 .blur{
     z-index: 3;
@@ -24,9 +28,15 @@ h5{
     font-size: small;
     margin-top: 10px;
 }
+h6{
+    font-size: 12px;
+}
+.p-3 {
+    padding: 0px!important;
+}
 .container{
     display: flex;
-    height: auto;
+    height: 85vh;
     width: auto;
     align-items: center;
     justify-content: center;
