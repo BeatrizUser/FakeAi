@@ -134,25 +134,21 @@ function perguntamultioption(question){
     `)
     $("#piada").click(function(){
         var idnext = question.nextquestion1
-        perguntaoption2(questionario[idnext])
         encoderaudio(questionario[idnext])
         seletor(questionario[idnext])
     });
     $("#algoint").click(function(){
         var idnext = question.nextquestion2
-        perguntaoption2(questionario[idnext])
         encoderaudio(questionario[idnext])
         seletor(questionario[idnext])
     });
     $("#info").click(function(){
         var idnext = question.nextquestion3
-        perguntaoption2(questionario[idnext])
         encoderaudio(questionario[idnext])
         seletor(questionario[idnext])
     });
     $("#video").click(function(){
         var idnext = question.nextquestion4
-        perguntaoption2(questionario[idnext])
         encoderaudio(questionario[idnext])
         seletor(questionario[idnext])
     });
