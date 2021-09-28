@@ -18,29 +18,38 @@ var questionario = [
         
     },
     {
-        pergunta: () => `Legal ${memoria.primeironome} ${memoria.segundonome}! Voce quer rir?`,
+        pergunta: () => `Legal ${memoria.primeironome} ${memoria.segundonome}! qual é o seu CPF?`,
         audio: () => `https://vaas108.cpqd.com.br/rest/v2/synthesize?text=${memoria.text2speech}&voice=carlos-highquality.voice`,
-        exibicao: "option",
-        option1: "Sim. quero.",
-        option2: "Não tô afim!",
-        nextquestion1: 6,
-        nextquestion2: 5,
+        exibicao: "input",
+        nomedememoria: "numerocpf",
+        nextquestion: 3,
     },
     {
-        pergunta: () => "Vai ficar tudo bem! Eu prometo!",
+        pergunta: () => `Digite uma senha ${memoria.primeironome} ${memoria.segundonome}.`,
         audio: () => `https://vaas108.cpqd.com.br/rest/v2/synthesize?text=${memoria.text2speech}&voice=carlos-highquality.voice`,
-        exibicao: "option",
-        option1: "Vai sim",
-        option2: "Acho que não!",
-        nextquestion1: 6,
-        nextquestion2: 4,
+        exibicao: "inputpassword",
+        nomedememoria: "senha",
+        nextquestion: 4,
     },
     {
-        pergunta: () => "Vai melhorar Pedrão! Quer rir?",
+        pergunta: () =>`Vou te chamar só de ${memoria.primeironome}! Ok?`,
         audio: () => `https://vaas108.cpqd.com.br/rest/v2/synthesize?text=${memoria.text2speech}&voice=carlos-highquality.voice`,
-        exibicao: "option",
-        option1: "Sim. quero.",
-        option2: "Não tô afim!",
+        exibicao: "onlyoption",
+        option1: "Ok",
+        nomedememoria: "ignorarsegundonome",
+        nextquestion: 5,
+    },
+    // ATE AQUI DEUS AJUDOU!
+    
+    {
+        pergunta: () => `${memoria.primeironome}, aqui é você que manda!\nO que você quer fazer?`,
+        audio: () => `https://vaas108.cpqd.com.br/rest/v2/synthesize?text=${memoria.text2speech}&voice=carlos-highquality.voice`,
+        exibicao: "multioption",
+        option1: "Ouvir Piada",
+        option2: "Algo Interessante",
+        option3: "Ver suas informações",
+        option4: "Assistir um Video",
+        option5: "Algo Interessante",
         nextquestion1: 6,
         nextquestion2: 5,
     },
@@ -82,22 +91,11 @@ var questionario = [
     },
 ]
 
-function exibirperguntaopcao(question){
-    $("#question").text(`${question.pergunta()}`)
-    $("#resposta").html(`<button class="btnresposta" id="sim">${question.option1}</button><button class="btnresposta" id="nao">${question.option2}</button>`)
-    $("#sim").click(function(){
-        var idnext = question.nextquestion1
-        exibirperguntaopcao(questionario[idnext])
-    });
-    $("#nao").click(function(){
-        var idnext = question.nextquestion2
-        exibirperguntaopcao(questionario[idnext])
-    });
-}
+// FUNÇÃO DE ANALISE DE TIPO DE INTERAÇÃO
 function seletor(question){
     $("#audio").html(`<audio hidden="True" controls="" autoplay="" name="media"><source src="${question.audio()}" type="audio/x-wav"></audio>`)
     if (question.exibicao == "input"){
-        perguntainput(question)
+        perguntainputtext(question)
         return 0
     }
     if (question.exibicao == "video"){
@@ -108,9 +106,41 @@ function seletor(question){
         perguntaoption(question)
         return 0
     }
-    exibirperguntaopcao(question)
+    if (question.exibicao == "inputpassword"){
+        perguntainputpassword(question)
+        return 0
+    }
+    perguntaoption2(question)
 }
-function perguntainput(question){
+
+
+
+
+// FUNCÕES DE CONSTRUÇÃO - EXIBI HTML DE ACORDO COM O TIPO DE INTERAÇÃO
+
+function perguntaonlyoption(question){
+    $("#question").text(`${question.pergunta()}`)
+    $("#resposta").html(`<button class="btnresposta" id="ok">${question.option1}</button>`)
+    $("#ok").click(function(){
+        var idnext = question.nextquestion
+        seletor(questionario[idnext])
+    });
+}
+
+function perguntaoption2(question){
+    $("#question").text(`${question.pergunta()}`)
+    $("#resposta").html(`<button class="btnresposta" id="sim">${question.option1}</button><button class="btnresposta" id="nao">${question.option2}</button>`)
+    $("#sim").click(function(){
+        var idnext = question.nextquestion1
+        perguntaoption2(questionario[idnext])
+    });
+    $("#nao").click(function(){
+        var idnext = question.nextquestion2
+        perguntaoption2(questionario[idnext])
+    });
+}
+
+function perguntainputtext(question){
     $("#question").text(`${question.pergunta()}`)
     $("#resposta").html(`<input type="text" id="inputnome"><button id="inputok">>></button>`)
     $("#inputok").click(function(){
@@ -121,6 +151,18 @@ function perguntainput(question){
         seletor(questionario[question.nextquestion])
     });
 }
+function perguntainputpassword(question){
+    $("#question").text(`${question.pergunta()}`)
+    $("#resposta").html(`<input type="password" id="inputpassword"><button id="inputok">>></button>`)
+    $("#inputok").click(function(){
+        var senha = $("#inputpassword").val()
+        var nomechave = question.nomedememoria
+        memoria[nomechave] = senha
+        encoderaudio(questionario[question.nextquestion])
+        seletor(questionario[question.nextquestion])
+    });
+}
+
 function perguntaoption(question){
     $("#question").text(`${question.pergunta()}`)
     $("#resposta").html(`<button id="sim" class=".btnresposta">${question.option1}</button><button id="nao" class=".btnresposta">${question.option2}</button>`)
@@ -135,6 +177,11 @@ function perguntaoption(question){
         seletor(questionario[idnext])
     });
 }
+
+
+
+
+// FUNÇÕES DE SELEÇÃO
 function encoderaudio(question){
     var texto = `${question.pergunta()}`
     var encoder = encodeURIComponent(texto);
@@ -142,6 +189,11 @@ function encoderaudio(question){
     memoria[audiochave] = encoder
 
 }
+
+
+
+
+// READY!  QUANDO A PAGINA ABRE RODA AS SEGUINTES FUNCOES NA ORDEM DADA.
 $( document ).ready(function() {
     encoderaudio(questionario[0])
     seletor(questionario[0])
