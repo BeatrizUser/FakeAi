@@ -1,6 +1,85 @@
 var memoria = {
     nomerobo: "Jorge"
 }
+var listapiadas = [
+    {
+        piada: () => `O que o pato disse para a pata?`,
+        audio: () => `https://vaas108.cpqd.com.br/rest/v2/synthesize?text=${memoria.text2speech}&voice=carlos-highquality.voice`,
+        exibicao: "piada",
+        resposta: "Vem Quá!",
+        nextquestion: 5,
+    },
+    {
+        piada: () => `Qual é a fórmula da água benta?`,
+        audio: () => `https://vaas108.cpqd.com.br/rest/v2/synthesize?text=${memoria.text2speech}&voice=carlos-highquality.voice`,
+        exibicao: "piada",
+        resposta: "H Deus O!",
+        nextquestion: 5,
+    },
+    {
+        piada: () => `Qual a cidade brasileira que não tem táxi?`,
+        audio: () => `https://vaas108.cpqd.com.br/rest/v2/synthesize?text=${memoria.text2speech}&voice=carlos-highquality.voice`,
+        exibicao: "piada",
+        resposta: "Uberlândia!",
+        nextquestion: 5,
+    },
+    {
+        piada: () => `O que o tijolo falou para o outro?`,
+        audio: () => `https://vaas108.cpqd.com.br/rest/v2/synthesize?text=${memoria.text2speech}&voice=carlos-highquality.voice`,
+        exibicao: "piada",
+        resposta: "Há um ciumento entre nós.",
+        nextquestion: 5,
+    },
+    {
+        piada: () => `Porque o Batman colocou o bat-móvel no seguro?`,
+        audio: () => `https://vaas108.cpqd.com.br/rest/v2/synthesize?text=${memoria.text2speech}&voice=carlos-highquality.voice`,
+        exibicao: "piada",
+        resposta: "Porque ele tem medo que Robin!",
+        nextquestion: 5,
+    },
+    {
+        piada: () => `Quem é a vó dos trigos?`,
+        audio: () => `https://vaas108.cpqd.com.br/rest/v2/synthesize?text=${memoria.text2speech}&voice=carlos-highquality.voice`,
+        exibicao: "piada",
+        resposta: "Avéia!",
+        nextquestion: 5,
+    },
+    {
+        piada: () => `Porque o rádio não pode ter filhos?`,
+        audio: () => `https://vaas108.cpqd.com.br/rest/v2/synthesize?text=${memoria.text2speech}&voice=carlos-highquality.voice`,
+        exibicao: "piada",
+        resposta: "Porque ele é stereo",
+        nextquestion: 5,
+    },
+]
+var fatosinteressantes = [
+    {
+        fato: () => `As três famílias mais ricas do mundo têm mais dinheiro que a riqueza dos 48 países mais pobres do mundo`,
+        audio: () => `https://vaas108.cpqd.com.br/rest/v2/synthesize?text=${memoria.text2speech}&voice=carlos-highquality.voice`,
+        nextquestion: 5,
+    },
+    {
+        fato: () => `Até 2011, a cerveja não era considerada uma bebida alcoólica na Rússia, Ela era classificada como um refresco;`,
+        audio: () => `https://vaas108.cpqd.com.br/rest/v2/synthesize?text=${memoria.text2speech}&voice=carlos-highquality.voice`,
+        nextquestion: 5,
+    },
+    {
+        fato: () => `Nos Estados Unidos existem mais casas sem ninguém morando do que moradores de rua.`,
+        audio: () => `https://vaas108.cpqd.com.br/rest/v2/synthesize?text=${memoria.text2speech}&voice=carlos-highquality.voice`,
+        nextquestion: 5,
+    },
+    {
+        fato: () => `A maioria dos banheiros em Hong Kong utilizam água do mar. Isso é feito para conservar a pouca quantidade de água doce que tem disponível;`,
+        audio: () => `https://vaas108.cpqd.com.br/rest/v2/synthesize?text=${memoria.text2speech}&voice=carlos-highquality.voice`,
+        nextquestion: 5,
+    },
+    {
+        fato: () => `Cerca de 2/3 dos habitantes da Terra nunca viram neve na vida`,
+        audio: () => `https://vaas108.cpqd.com.br/rest/v2/synthesize?text=${memoria.text2speech}&voice=carlos-highquality.voice`,
+        nextquestion: 5,
+    },
+]
+    
 var questionario = [
     {
         pergunta: () => `Oi Humano eu sou o ${memoria.nomerobo}!\n Qual é o seu primeiro nome?`,
@@ -121,10 +200,14 @@ function seletor(question){
         perguntavideooption(question)
         return 0
     }
+    if (question.exibicao == "piada"){
+        perguntapiadaoption(question)
+        return 0
+    }
     perguntaoption2(question)
 }
 // FUNCÕES DE CONSTRUÇÃO - EXIBI HTML DE ACORDO COM O TIPO DE INTERAÇÃO
-function perguntamultioption(question){
+function perguntamultioption(question,piadas){
     $("#question").text(`${question.pergunta()}`)
     $("#resposta").html(`
     <button class="btnresposta" id="piada">${question.option1}</button>
@@ -133,9 +216,10 @@ function perguntamultioption(question){
     <button class="btnresposta" id="videobtn">${question.option4}</button>
     `)
     $("#piada").click(function(){
-        var idnext = question.nextquestion1
-        encoderaudio(questionario[idnext])
-        seletor(questionario[idnext])
+        var index = Math.floor(Math.random()*(10-0+1)+0);
+        var idnext = piadas.nextquestion
+        encoderaudiopiadas(questionario[idnext])
+        perguntapiadaoption(listapiadas[index])
     });
     $("#algoint").click(function(){
         var idnext = question.nextquestion2
@@ -200,17 +284,17 @@ function perguntainputcpf(question){
     $("#question").text(`${question.pergunta()}`)
     $("#resposta").html(`<input type="text" id="inputcpf" pattern="[0-9]{11}" placeholder="Insira seu CPF..."><button id="inputok">>></button>`)
     var cpf = $("#inputcpf");
-    cpf.mask('000.000.000-00', {reverse: true});
+    cpf.mask('000.000.000-00', {reverse: false});
     $("#inputok").click(function(){
-        if (parseInt($("#inputcpf").val().length) <= 14){
-            var cpf = $("#inputcpf").val()
-            var nomechave = question.nomedememoria
-            memoria[nomechave] = cpf
-            encoderaudio(questionario[question.nextquestion])
-            seletor(questionario[question.nextquestion])
+        if (parseInt($("#inputcpf").val().length) != 14){
+            alert("Digite 11 números!")
             return 0
-    }
-        alert("Digite 11 números!")
+        }
+        var cpf = $("#inputcpf").val()
+        var nomechave = question.nomedememoria
+        memoria[nomechave] = cpf
+        encoderaudio(questionario[question.nextquestion])
+        seletor(questionario[question.nextquestion])
     });
 }
 function perguntaoption(question){
@@ -256,7 +340,23 @@ function perguntavideooption(question){
         seletor(questionario[idnext])
     });
 }
+function perguntapiadaoption(listapiadas){
+    $("#question").text(`${listapiadas.piada()}`)
+    $("#resposta").html(`<button class="btnresposta" id="ok">Ok</button><button class="revelarresposta" id="ok">Ver resposta</button>`)
+    $("#ok").click(function(){
+        var idnext = listapiadas.nextquestion
+        encoderaudiopiadas(questionario[idnext])
+        seletor(questionario[idnext])
+    });
+}
 // FUNÇÕES DE SELEÇÃO
+function encoderaudiopiadas(listapiadas){
+    var texto = `${listapiadas.piada()}`
+    var encoder = encodeURIComponent(texto);
+    var audiochave = "text2speech"
+    memoria[audiochave] = encoder
+
+}
 function encoderaudio(question){
     var texto = `${question.pergunta()}`
     var encoder = encodeURIComponent(texto);
@@ -266,6 +366,6 @@ function encoderaudio(question){
 }
 // READY!  QUANDO A PAGINA ABRE RODA AS SEGUINTES FUNCOES NA ORDEM DADA.
 $( document ).ready(function() {
-    encoderaudio(questionario[0])
-    seletor(questionario[0])
+    encoderaudio(questionario[0],listapiadas[0])
+    seletor(questionario[0],listapiadas[0])
   });
