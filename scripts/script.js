@@ -123,7 +123,6 @@ function seletor(question){
     }
     perguntaoption2(question)
 }
-
 // FUNCÕES DE CONSTRUÇÃO - EXIBI HTML DE ACORDO COM O TIPO DE INTERAÇÃO
 function perguntamultioption(question){
     $("#question").text(`${question.pergunta()}`)
@@ -200,15 +199,11 @@ function perguntainputpassword(question){
 function perguntainputcpf(question){
     $("#question").text(`${question.pergunta()}`)
     $("#resposta").html(`<input type="text" id="inputcpf" pattern="[0-9]{11}" placeholder="Insira seu CPF..."><button id="inputok">>></button>`)
+    var cpf = $("#inputcpf");
+    cpf.mask('000.000.000-00', {reverse: true});
     $("#inputok").click(function(){
-        if (parseInt($("#inputcpf").val().length) == 11){
-            var part1 = $("#inputcpf").val().slice(0,3);
-            var part2 = $("#inputcpf").val().slice(3,6);
-            var part3 = $("#inputcpf").val().slice(6,9);
-            var part4 = $("#inputcpf").val().slice(9,11);
-            var formatcpf = `${part1}.${part2}.${part3}-${part4}`
-            
-            var cpf = formatcpf
+        if (parseInt($("#inputcpf").val().length) <= 14){
+            var cpf = $("#inputcpf").val()
             var nomechave = question.nomedememoria
             memoria[nomechave] = cpf
             encoderaudio(questionario[question.nextquestion])
