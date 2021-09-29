@@ -82,7 +82,7 @@ var questionario = [
         exibicao: "video",
         option1: "Voltar",
         nextquestion: 5,
-        urlvideo: "https://www.youtube.com/embed/cEItmb_a20M?controls=0",
+        urlvideo: "https://www.youtube.com/embed/XqQ_IfaojFQ",
     },
 ]
 
@@ -131,7 +131,7 @@ function perguntamultioption(question){
     <button class="btnresposta" id="piada">${question.option1}</button>
     <button class="btnresposta" id="algoint">${question.option2}</button>
     <button class="btnresposta" id="info">${question.option3}</button>
-    <button class="btnresposta" id="video">${question.option4}</button>
+    <button class="btnresposta" id="videobtn">${question.option4}</button>
     `)
     $("#piada").click(function(){
         var idnext = question.nextquestion1
@@ -148,7 +148,7 @@ function perguntamultioption(question){
         encoderaudio(questionario[idnext])
         seletor(questionario[idnext])
     });
-    $("#video").click(function(){
+    $("#videobtn").click(function(){
         var idnext = question.nextquestion4
         encoderaudio(questionario[idnext])
         seletor(questionario[idnext])
@@ -254,6 +254,8 @@ function perguntavideooption(question){
     $("#resposta").html(`<button class="btnresposta" id="ok">${question.option1}</button>`)
     $("#video").html(`<iframe width="560" height="315" src="${question.urlvideo}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`)
     $("#ok").click(function(){
+        $("#resposta").html(``)
+        $("#video").html(``)
         var idnext = question.nextquestion
         encoderaudio(questionario[idnext])
         seletor(questionario[idnext])
