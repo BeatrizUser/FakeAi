@@ -82,7 +82,7 @@ var questionario = [
         exibicao: "video",
         option1: "Voltar",
         nextquestion: 5,
-        urlvideo: "https://www.youtube.com/embed/XqQ_IfaojFQ",
+        urlvideo: "XqQ_IfaojFQ",
     },
 ]
 
@@ -252,7 +252,7 @@ function perguntainfooption(question){
 function perguntavideooption(question){
     $("#question").text(`${question.pergunta()}`)
     $("#resposta").html(`<button class="btnresposta" id="ok">${question.option1}</button>`)
-    $("#video").html(`<iframe width="560" height="315" src="${question.urlvideo}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`)
+    $("#video").html(`<iframe width="560" height="315" src="https://www.youtube.com/embed/${question.urlvideo}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`)
     $("#ok").click(function(){
         $("#resposta").html(``)
         $("#video").html(``)
