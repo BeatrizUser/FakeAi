@@ -157,8 +157,7 @@ var questionario = [
         nomedememoria: "ignorarsegundonome",
         nextquestion: 5,
     },
-    // ATE AQUI DEUS AJUDOU!
-
+    
     {
         pergunta: () => `Aqui é você que manda!\nO que você quer fazer?`,
         audio: () => `https://vaas108.cpqd.com.br/rest/v2/synthesize?text=${memoria.text2speech}&voice=carlos-highquality.voice`,
@@ -167,12 +166,13 @@ var questionario = [
         option2: "Algo Interessante",
         option3: "Ver suas informações",
         option4: "Assistir um Video",
-    
+        
         nextquestion1: 6,
         nextquestion2: 7,
         nextquestion3: 8,
         nextquestion4: 9,
     },
+    // ATE AQUI DEUS AJUDOU!
     {
         pergunta: () => "Era uma vez um pintinho sem cu!\n Foi peidar e explodiu!",
         audio: () => `https://vaas108.cpqd.com.br/rest/v2/synthesize?text=${memoria.text2speech}&voice=carlos-highquality.voice`,
@@ -259,9 +259,7 @@ function perguntamultioption(question){
         perguntapiadaoption()
     });
     $("#algoint").click(function(){
-        var idnext = question.nextquestion2
-        encoderaudio(questionario[idnext])
-        seletor(questionario[idnext])
+        perguntafatooption()
     });
     $("#info").click(function(){
         var idnext = question.nextquestion3
@@ -399,7 +397,31 @@ function perguntapiadaoption(){
         perguntapiadaoption()
     });
 }
+function perguntafatooption(){
+    var max = fatosinteressantes.length
+    var index = Math.floor(Math.random()*(max-0+1)+0);
+    memoria.num = index
+    encoderaudiofatos(fatosinteressantes[index])
+    $("#question").text(fatosinteressantes[index].fato)
+    $("#resposta").html(`<button class="btnresposta" id="ok">Ok</button><button class="btnresposta" id="outro">Outro fato</button>`)
+    $("#ok").click(function(){
+        encoderaudio(questionario[5])
+        seletor(questionario[5])
+    });
+    $("#outro").click(function(){
+        perguntafatooption()
+    });
+}
+
 // FUNÇÕES DE SELEÇÃO
+function encoderaudiofatos(lista){
+    var texto = `${lista.fato()}`
+    var encoder = encodeURIComponent(texto);
+    var audiochave = "text2speech"
+    memoria[audiochave] = encoder
+    $("#audio").html(`<audio src="${lista.audio()}" hidden="true" controls autoplay></audio>`)
+
+}
 function encoderaudiopiadaresposta(lista){
     var texto = `${lista.resposta}`
     var encoder = encodeURIComponent(texto);
