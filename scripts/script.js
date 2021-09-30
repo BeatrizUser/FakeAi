@@ -392,6 +392,7 @@ function perguntapiadaoption(){
     });
     $("#revelarresposta").click(function(){
         $("#respostapiada").html(`R.: ${listapiadas[index].resposta}`)
+        encoderaudiopiadaresposta(listapiadas[index])
     });
     $("#outra").click(function(){
         $("#respostapiada").html(``)
@@ -399,6 +400,14 @@ function perguntapiadaoption(){
     });
 }
 // FUNÇÕES DE SELEÇÃO
+function encoderaudiopiadaresposta(lista){
+    var texto = `${lista.resposta}`
+    var encoder = encodeURIComponent(texto);
+    var audiochave = "text2speech"
+    memoria[audiochave] = encoder
+    $("#audio").html(`<audio src="${lista.audio()}" hidden="true" controls autoplay></audio>`)
+
+}
 function encoderaudiopiadas(lista){
     var texto = `${lista.piada()}`
     var encoder = encodeURIComponent(texto);
