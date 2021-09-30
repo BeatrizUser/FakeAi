@@ -51,6 +51,34 @@ var listapiadas = [
         resposta: "Porque ele é stereo",
         nextquestion: 5,
     },
+    {
+        piada: () => `O que é um pontinho preto no avião?`,
+        audio: () => `https://vaas108.cpqd.com.br/rest/v2/synthesize?text=${memoria.text2speech}&voice=carlos-highquality.voice`,
+        exibicao: "piadaoption",
+        resposta: "Uma aeromosca.",
+        nextquestion: 5,
+    },
+    {
+        piada: () => `Sabe o que o rato diz quando se queima?`,
+        audio: () => `https://vaas108.cpqd.com.br/rest/v2/synthesize?text=${memoria.text2speech}&voice=carlos-highquality.voice`,
+        exibicao: "piadaoption",
+        resposta: "Ai! eu Mickey mei!",
+        nextquestion: 5,
+    },
+    {
+        piada: () => `Qual é o ator que ta achando esse ano muito ruim!`,
+        audio: () => `https://vaas108.cpqd.com.br/rest/v2/synthesize?text=${memoria.text2speech}&voice=carlos-highquality.voice`,
+        exibicao: "piadaoption",
+        resposta: "Keanu reeves",
+        nextquestion: 5,
+    },
+    {
+        piada: () => `Qual é o Rei dos queijos?`,
+        audio: () => `https://vaas108.cpqd.com.br/rest/v2/synthesize?text=${memoria.text2speech}&voice=carlos-highquality.voice`,
+        exibicao: "piadaoption",
+        resposta: "O Requeijão",
+        nextquestion: 5,
+    },
 ]
 var fatosinteressantes = [
     {
@@ -340,9 +368,9 @@ function perguntavideooption(question){
     });
 }
 function perguntapiadaoption(){
-    var index = Math.floor(Math.random()*(6-0+1)+0);
+    var index = Math.floor(Math.random()*(10-0+1)+0);
     $("#question").text(listapiadas[index].piada)
-    $("#resposta").html(`<button class="btnresposta" id="ok">Ok</button><button class="btnresposta" id="revelarresposta">Ver resposta</button>`)
+    $("#resposta").html(`<button class="btnresposta" id="ok">Ok</button><button class="btnresposta" id="revelarresposta">Ver resposta</button><button class="btnresposta" id="outra">Outra piada</button>`)
     $("#ok").click(function(){
         $("#respostapiada").html(``)
         var idnext = 5
@@ -351,6 +379,10 @@ function perguntapiadaoption(){
     });
     $("#revelarresposta").click(function(){
         $("#respostapiada").html(`R.: ${listapiadas[index].resposta}`)
+    });
+    $("#outra").click(function(){
+        $("#respostapiada").html(``)
+        perguntapiadaoption()
     });
 }
 // FUNÇÕES DE SELEÇÃO
