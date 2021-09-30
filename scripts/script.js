@@ -4,7 +4,8 @@ var memoria = {
 var listapiadas = [
     {
         piada: () => `O que o pato disse para a pata?`,
-        audio: () => `https://vaas108.cpqd.com.br/rest/v2/synthesize?text=${memoria.text2speech}&voice=carlos-highquality.voice`,
+        audio:`https://vaas108.cpqd.com.br/rest/v2/synthesize?text=${memoria.text2speech}&voice=carlos-highquality.voice`,
+        chave: "num",
         exibicao: "piadaoption",
         resposta: "Vem Quá!",
         nextquestion: 5,
@@ -12,6 +13,7 @@ var listapiadas = [
     {
         piada: () => `Qual é a fórmula da água benta?`,
         audio: () => `https://vaas108.cpqd.com.br/rest/v2/synthesize?text=${memoria.text2speech}&voice=carlos-highquality.voice`,
+        chave: "num",
         exibicao: "piadaoption",
         resposta: "H Deus O!",
         nextquestion: 5,
@@ -19,6 +21,7 @@ var listapiadas = [
     {
         piada: () => `Qual a cidade brasileira que não tem táxi?`,
         audio: () => `https://vaas108.cpqd.com.br/rest/v2/synthesize?text=${memoria.text2speech}&voice=carlos-highquality.voice`,
+        chave: "num",
         exibicao: "piadaoption",
         resposta: "Uberlândia!",
         nextquestion: 5,
@@ -26,6 +29,7 @@ var listapiadas = [
     {
         piada: () => `O que o tijolo falou para o outro?`,
         audio: () => `https://vaas108.cpqd.com.br/rest/v2/synthesize?text=${memoria.text2speech}&voice=carlos-highquality.voice`,
+        chave: "num",
         exibicao: "piadaoption",
         resposta: "Há um ciumento entre nós.",
         nextquestion: 5,
@@ -33,6 +37,7 @@ var listapiadas = [
     {
         piada: () => `Porque o Batman colocou o bat-móvel no seguro?`,
         audio: () => `https://vaas108.cpqd.com.br/rest/v2/synthesize?text=${memoria.text2speech}&voice=carlos-highquality.voice`,
+        chave: "num",
         exibicao: "piadaoption",
         resposta: "Porque ele tem medo que Robin!",
         nextquestion: 5,
@@ -40,6 +45,7 @@ var listapiadas = [
     {
         piada: () => `Quem é a vó dos trigos?`,
         audio: () => `https://vaas108.cpqd.com.br/rest/v2/synthesize?text=${memoria.text2speech}&voice=carlos-highquality.voice`,
+        chave: "num",
         exibicao: "piadaoption",
         resposta: "Avéia!",
         nextquestion: 5,
@@ -47,6 +53,7 @@ var listapiadas = [
     {
         piada: () => `Porque o rádio não pode ter filhos?`,
         audio: () => `https://vaas108.cpqd.com.br/rest/v2/synthesize?text=${memoria.text2speech}&voice=carlos-highquality.voice`,
+        chave: "num",
         exibicao: "piadaoption",
         resposta: "Porque ele é stereo",
         nextquestion: 5,
@@ -54,6 +61,7 @@ var listapiadas = [
     {
         piada: () => `O que é um pontinho preto no avião?`,
         audio: () => `https://vaas108.cpqd.com.br/rest/v2/synthesize?text=${memoria.text2speech}&voice=carlos-highquality.voice`,
+        chave: "num",
         exibicao: "piadaoption",
         resposta: "Uma aeromosca.",
         nextquestion: 5,
@@ -61,6 +69,7 @@ var listapiadas = [
     {
         piada: () => `Sabe o que o rato diz quando se queima?`,
         audio: () => `https://vaas108.cpqd.com.br/rest/v2/synthesize?text=${memoria.text2speech}&voice=carlos-highquality.voice`,
+        chave: "num",
         exibicao: "piadaoption",
         resposta: "Ai! eu Mickey mei!",
         nextquestion: 5,
@@ -68,6 +77,7 @@ var listapiadas = [
     {
         piada: () => `Qual é o ator que ta achando esse ano muito ruim!`,
         audio: () => `https://vaas108.cpqd.com.br/rest/v2/synthesize?text=${memoria.text2speech}&voice=carlos-highquality.voice`,
+        chave: "num",
         exibicao: "piadaoption",
         resposta: "Keanu reeves",
         nextquestion: 5,
@@ -75,6 +85,7 @@ var listapiadas = [
     {
         piada: () => `Qual é o Rei dos queijos?`,
         audio: () => `https://vaas108.cpqd.com.br/rest/v2/synthesize?text=${memoria.text2speech}&voice=carlos-highquality.voice`,
+        chave: "num",
         exibicao: "piadaoption",
         resposta: "O Requeijão",
         nextquestion: 5,
@@ -197,7 +208,7 @@ var questionario = [
 function seletor(question){
     // $("#audio").html(`<audio hidden="True" controls="" autoplay="" name="media"><source src="${question.audio()}" type="audio/x-wav"></audio>`)
     if (question.exibicao == "piadaoption"){
-        perguntapiadaoption(question)
+        perguntapiadaoption()
         return 0
     }
     if (question.exibicao == "input"){
@@ -246,7 +257,6 @@ function perguntamultioption(question){
     `)
     $("#piada").click(function(){
         perguntapiadaoption()
-        encoderaudiopiadas()
     });
     $("#algoint").click(function(){
         var idnext = question.nextquestion2
@@ -368,14 +378,17 @@ function perguntavideooption(question){
     });
 }
 function perguntapiadaoption(){
-    var index = Math.floor(Math.random()*(10-0+1)+0);
+    var max = listapiadas.length
+    var index = Math.floor(Math.random()*(max-0+1)+0);
+    var nomechave = listapiadas.chave
+    memoria[nomechave] = index
+    encoderaudiopiadas(listapiadas[index])
     $("#question").text(listapiadas[index].piada)
     $("#resposta").html(`<button class="btnresposta" id="ok">Ok</button><button class="btnresposta" id="revelarresposta">Ver resposta</button><button class="btnresposta" id="outra">Outra piada</button>`)
     $("#ok").click(function(){
         $("#respostapiada").html(``)
-        var idnext = 5
-        encoderaudiopiadas(questionario[idnext])
-        seletor(questionario[idnext])
+        encoderaudio(questionario[5])
+        seletor(questionario[5])
     });
     $("#revelarresposta").click(function(){
         $("#respostapiada").html(`R.: ${listapiadas[index].resposta}`)
@@ -386,11 +399,12 @@ function perguntapiadaoption(){
     });
 }
 // FUNÇÕES DE SELEÇÃO
-function encoderaudiopiadas(){
-    var texto = listapiadas.piada
+function encoderaudiopiadas(lista){
+    var texto = `${lista.piada()}`
     var encoder = encodeURIComponent(texto);
     var audiochave = "text2speech"
     memoria[audiochave] = encoder
+    $("#audio").html(`<audio src="${lista.audio()}" hidden="true" controls autoplay></audio>`)
 
 }
 function encoderaudio(question){
@@ -398,10 +412,12 @@ function encoderaudio(question){
     var encoder = encodeURIComponent(texto);
     var audiochave = "text2speech"
     memoria[audiochave] = encoder
+    $("#audio").html(`<audio src="${question.audio()}" hidden="true" controls autoplay></audio>`)
+
 
 }
 // READY!  QUANDO A PAGINA ABRE RODA AS SEGUINTES FUNCOES NA ORDEM DADA.
 $( document ).ready(function() {
-    encoderaudio(questionario[0],listapiadas[0])
-    seletor(questionario[0],listapiadas[0])
+    encoderaudio(questionario[0])
+    seletor(questionario[0])
   });
