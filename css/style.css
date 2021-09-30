@@ -85,6 +85,17 @@ select:-webkit-autofill:focus {
     display: flex;
     text-align: center;
 }
+#respostapiada{
+    font-size: 2vh;
+    color: #e6e6e6;
+    font-weight: 300;
+    text-shadow: #000 1px 2px 8px;
+    margin-bottom: 20px;
+    letter-spacing: 2px;
+    transition: 1s;
+    display: flex;
+    text-align: center;
+}
 #resposta{
     display: flex;
     align-items: baseline;

@@ -5,49 +5,49 @@ var listapiadas = [
     {
         piada: () => `O que o pato disse para a pata?`,
         audio: () => `https://vaas108.cpqd.com.br/rest/v2/synthesize?text=${memoria.text2speech}&voice=carlos-highquality.voice`,
-        exibicao: "piada",
+        exibicao: "piadaoption",
         resposta: "Vem Quá!",
         nextquestion: 5,
     },
     {
         piada: () => `Qual é a fórmula da água benta?`,
         audio: () => `https://vaas108.cpqd.com.br/rest/v2/synthesize?text=${memoria.text2speech}&voice=carlos-highquality.voice`,
-        exibicao: "piada",
+        exibicao: "piadaoption",
         resposta: "H Deus O!",
         nextquestion: 5,
     },
     {
         piada: () => `Qual a cidade brasileira que não tem táxi?`,
         audio: () => `https://vaas108.cpqd.com.br/rest/v2/synthesize?text=${memoria.text2speech}&voice=carlos-highquality.voice`,
-        exibicao: "piada",
+        exibicao: "piadaoption",
         resposta: "Uberlândia!",
         nextquestion: 5,
     },
     {
         piada: () => `O que o tijolo falou para o outro?`,
         audio: () => `https://vaas108.cpqd.com.br/rest/v2/synthesize?text=${memoria.text2speech}&voice=carlos-highquality.voice`,
-        exibicao: "piada",
+        exibicao: "piadaoption",
         resposta: "Há um ciumento entre nós.",
         nextquestion: 5,
     },
     {
         piada: () => `Porque o Batman colocou o bat-móvel no seguro?`,
         audio: () => `https://vaas108.cpqd.com.br/rest/v2/synthesize?text=${memoria.text2speech}&voice=carlos-highquality.voice`,
-        exibicao: "piada",
+        exibicao: "piadaoption",
         resposta: "Porque ele tem medo que Robin!",
         nextquestion: 5,
     },
     {
         piada: () => `Quem é a vó dos trigos?`,
         audio: () => `https://vaas108.cpqd.com.br/rest/v2/synthesize?text=${memoria.text2speech}&voice=carlos-highquality.voice`,
-        exibicao: "piada",
+        exibicao: "piadaoption",
         resposta: "Avéia!",
         nextquestion: 5,
     },
     {
         piada: () => `Porque o rádio não pode ter filhos?`,
         audio: () => `https://vaas108.cpqd.com.br/rest/v2/synthesize?text=${memoria.text2speech}&voice=carlos-highquality.voice`,
-        exibicao: "piada",
+        exibicao: "piadaoption",
         resposta: "Porque ele é stereo",
         nextquestion: 5,
     },
@@ -167,7 +167,11 @@ var questionario = [
 
 // FUNÇÃO DE ANALISE DE TIPO DE INTERAÇÃO
 function seletor(question){
-    $("#audio").html(`<audio hidden="True" controls="" autoplay="" name="media"><source src="${question.audio()}" type="audio/x-wav"></audio>`)
+    // $("#audio").html(`<audio hidden="True" controls="" autoplay="" name="media"><source src="${question.audio()}" type="audio/x-wav"></audio>`)
+    if (question.exibicao == "piadaoption"){
+        perguntapiadaoption(question)
+        return 0
+    }
     if (question.exibicao == "input"){
         perguntainputtext(question)
         return 0
@@ -200,14 +204,11 @@ function seletor(question){
         perguntavideooption(question)
         return 0
     }
-    if (question.exibicao == "piada"){
-        perguntapiadaoption(question)
-        return 0
-    }
-    perguntaoption2(question)
+    alert(question)
+    perguntapiadaoption(question)
 }
 // FUNCÕES DE CONSTRUÇÃO - EXIBI HTML DE ACORDO COM O TIPO DE INTERAÇÃO
-function perguntamultioption(question,piadas){
+function perguntamultioption(question){
     $("#question").text(`${question.pergunta()}`)
     $("#resposta").html(`
     <button class="btnresposta" id="piada">${question.option1}</button>
@@ -216,10 +217,8 @@ function perguntamultioption(question,piadas){
     <button class="btnresposta" id="videobtn">${question.option4}</button>
     `)
     $("#piada").click(function(){
-        var index = Math.floor(Math.random()*(10-0+1)+0);
-        var idnext = piadas.nextquestion
-        encoderaudiopiadas(questionario[idnext])
-        perguntapiadaoption(listapiadas[index])
+        perguntapiadaoption()
+        encoderaudiopiadas()
     });
     $("#algoint").click(function(){
         var idnext = question.nextquestion2
@@ -340,18 +339,23 @@ function perguntavideooption(question){
         seletor(questionario[idnext])
     });
 }
-function perguntapiadaoption(listapiadas){
-    $("#question").text(`${listapiadas.piada()}`)
-    $("#resposta").html(`<button class="btnresposta" id="ok">Ok</button><button class="revelarresposta" id="ok">Ver resposta</button>`)
+function perguntapiadaoption(){
+    var index = Math.floor(Math.random()*(6-0+1)+0);
+    $("#question").text(listapiadas[index].piada)
+    $("#resposta").html(`<button class="btnresposta" id="ok">Ok</button><button class="btnresposta" id="revelarresposta">Ver resposta</button>`)
     $("#ok").click(function(){
-        var idnext = listapiadas.nextquestion
+        $("#respostapiada").html(``)
+        var idnext = 5
         encoderaudiopiadas(questionario[idnext])
         seletor(questionario[idnext])
     });
+    $("#revelarresposta").click(function(){
+        $("#respostapiada").html(`R.: ${listapiadas[index].resposta}`)
+    });
 }
 // FUNÇÕES DE SELEÇÃO
-function encoderaudiopiadas(listapiadas){
-    var texto = `${listapiadas.piada()}`
+function encoderaudiopiadas(){
+    var texto = listapiadas.piada
     var encoder = encodeURIComponent(texto);
     var audiochave = "text2speech"
     memoria[audiochave] = encoder
