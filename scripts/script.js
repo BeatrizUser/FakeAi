@@ -1,10 +1,10 @@
 var memoria = {
-    nomerobo: "Sofia"
+    nomerobo: "Laura"
 }
 var listapiadas = [
     {
         piada: () => `O que o pato disse para a pata?`,
-        audio:`https://vaas108.cpqd.com.br/rest/v2/synthesize?text=%3Cprosody%20pitch%3D%22-40%25%22%3E${memoria.text2speech}%3C%2Fprosody%3E&voice=adriana-highquality.voice`,
+        audio:`https://vaas108.cpqd.com.br/rest/v2/synthesize?text=${memoria.text2speech}&voice=adriana-highquality.voice`,
         chave: "num",
         exibicao: "piadaoption",
         resposta: "Vem Quá!",
@@ -12,7 +12,7 @@ var listapiadas = [
     },
     {
         piada: () => `Qual é a fórmula da água benta?`,
-        audio: () => `https://vaas108.cpqd.com.br/rest/v2/synthesize?text=%3Cprosody%20pitch%3D%22-40%25%22%3E${memoria.text2speech}%3C%2Fprosody%3E&voice=adriana-highquality.voice`,
+        audio: () => `https://vaas108.cpqd.com.br/rest/v2/synthesize?text=${memoria.text2speech}&voice=adriana-highquality.voice`,
         chave: "num",
         exibicao: "piadaoption",
         resposta: "H Deus O!",
@@ -20,7 +20,7 @@ var listapiadas = [
     },
     {
         piada: () => `Qual a cidade brasileira que não tem táxi?`,
-        audio: () => `https://vaas108.cpqd.com.br/rest/v2/synthesize?text=%3Cprosody%20pitch%3D%22-40%25%22%3E${memoria.text2speech}%3C%2Fprosody%3E&voice=adriana-highquality.voice`,
+        audio: () => `https://vaas108.cpqd.com.br/rest/v2/synthesize?text=${memoria.text2speech}&voice=adriana-highquality.voice`,
         chave: "num",
         exibicao: "piadaoption",
         resposta: "Uberlândia!",
@@ -28,7 +28,7 @@ var listapiadas = [
     },
     {
         piada: () => `O que o tijolo falou para o outro?`,
-        audio: () => `https://vaas108.cpqd.com.br/rest/v2/synthesize?text=%3Cprosody%20pitch%3D%22-40%25%22%3E${memoria.text2speech}%3C%2Fprosody%3E&voice=adriana-highquality.voice`,
+        audio: () => `https://vaas108.cpqd.com.br/rest/v2/synthesize?text=${memoria.text2speech}&voice=adriana-highquality.voice`,
         chave: "num",
         exibicao: "piadaoption",
         resposta: "Há um ciumento entre nós.",
@@ -36,7 +36,7 @@ var listapiadas = [
     },
     {
         piada: () => `Porque o Batman colocou o bat-móvel no seguro?`,
-        audio: () => `https://vaas108.cpqd.com.br/rest/v2/synthesize?text=%3Cprosody%20pitch%3D%22-40%25%22%3E${memoria.text2speech}%3C%2Fprosody%3E&voice=adriana-highquality.voice`,
+        audio: () => `https://vaas108.cpqd.com.br/rest/v2/synthesize?text=${memoria.text2speech}&voice=adriana-highquality.voice`,
         chave: "num",
         exibicao: "piadaoption",
         resposta: "Porque ele tem medo que Robin!",
@@ -44,7 +44,7 @@ var listapiadas = [
     },
     {
         piada: () => `Quem é a vó dos trigos?`,
-        audio: () => `https://vaas108.cpqd.com.br/rest/v2/synthesize?text=%3Cprosody%20pitch%3D%22-40%25%22%3E${memoria.text2speech}%3C%2Fprosody%3E&voice=adriana-highquality.voice`,
+        audio: () => `https://vaas108.cpqd.com.br/rest/v2/synthesize?text=${memoria.text2speech}&voice=adriana-highquality.voice`,
         chave: "num",
         exibicao: "piadaoption",
         resposta: "Avéia!",
@@ -52,7 +52,7 @@ var listapiadas = [
     },
     {
         piada: () => `Porque o rádio não pode ter filhos?`,
-        audio: () => `https://vaas108.cpqd.com.br/rest/v2/synthesize?text=%3Cprosody%20pitch%3D%22-40%25%22%3E${memoria.text2speech}%3C%2Fprosody%3E&voice=adriana-highquality.voice`,
+        audio: () => `https://vaas108.cpqd.com.br/rest/v2/synthesize?text=${memoria.text2speech}&voice=adriana-highquality.voice`,
         chave: "num",
         exibicao: "piadaoption",
         resposta: "Porque ele é stereo",
@@ -60,7 +60,7 @@ var listapiadas = [
     },
     {
         piada: () => `O que é um pontinho preto no avião?`,
-        audio: () => `https://vaas108.cpqd.com.br/rest/v2/synthesize?text=%3Cprosody%20pitch%3D%22-40%25%22%3E${memoria.text2speech}%3C%2Fprosody%3E&voice=adriana-highquality.voice`,
+        audio: () => `https://vaas108.cpqd.com.br/rest/v2/synthesize?text=${memoria.text2speech}&voice=adriana-highquality.voice`,
         chave: "num",
         exibicao: "piadaoption",
         resposta: "Uma aeromosca.",
@@ -68,7 +68,7 @@ var listapiadas = [
     },
     {
         piada: () => `Sabe o que o rato diz quando se queima?`,
-        audio: () => `https://vaas108.cpqd.com.br/rest/v2/synthesize?text=%3Cprosody%20pitch%3D%22-40%25%22%3E${memoria.text2speech}%3C%2Fprosody%3E&voice=adriana-highquality.voice`,
+        audio: () => `https://vaas108.cpqd.com.br/rest/v2/synthesize?text=${memoria.text2speech}&voice=adriana-highquality.voice`,
         chave: "num",
         exibicao: "piadaoption",
         resposta: "Ai! eu Mickey mei!",
@@ -76,7 +76,7 @@ var listapiadas = [
     },
     {
         piada: () => `Qual é o ator que ta achando esse ano muito ruim!`,
-        audio: () => `https://vaas108.cpqd.com.br/rest/v2/synthesize?text=%3Cprosody%20pitch%3D%22-40%25%22%3E${memoria.text2speech}%3C%2Fprosody%3E&voice=adriana-highquality.voice`,
+        audio: () => `https://vaas108.cpqd.com.br/rest/v2/synthesize?text=${memoria.text2speech}&voice=adriana-highquality.voice`,
         chave: "num",
         exibicao: "piadaoption",
         resposta: "Keanu reeves",
@@ -84,7 +84,7 @@ var listapiadas = [
     },
     {
         piada: () => `Qual é o Rei dos queijos?`,
-        audio: () => `https://vaas108.cpqd.com.br/rest/v2/synthesize?text=%3Cprosody%20pitch%3D%22-40%25%22%3E${memoria.text2speech}%3C%2Fprosody%3E&voice=adriana-highquality.voice`,
+        audio: () => `https://vaas108.cpqd.com.br/rest/v2/synthesize?text=${memoria.text2speech}&voice=adriana-highquality.voice`,
         chave: "num",
         exibicao: "piadaoption",
         resposta: "O Requeijão",
@@ -94,156 +94,156 @@ var listapiadas = [
 var fatosinteressantes = [
     {
         fato: () => `As três famílias mais ricas do mundo têm mais dinheiro que a riqueza dos 48 países mais pobres do mundo.`,
-        audio: () => `https://vaas108.cpqd.com.br/rest/v2/synthesize?text=%3Cprosody%20pitch%3D%22-40%25%22%3E${memoria.text2speech}%3C%2Fprosody%3E&voice=adriana-highquality.voice`,
+        audio: () => `https://vaas108.cpqd.com.br/rest/v2/synthesize?text=${memoria.text2speech}&voice=adriana-highquality.voice`,
         nextquestion: 5,
     },
     {
         fato: () => `Até 2011, a cerveja não era considerada uma bebida alcoólica na Rússia, Ela era classificada como um refresco.`,
-        audio: () => `https://vaas108.cpqd.com.br/rest/v2/synthesize?text=%3Cprosody%20pitch%3D%22-40%25%22%3E${memoria.text2speech}%3C%2Fprosody%3E&voice=adriana-highquality.voice`,
+        audio: () => `https://vaas108.cpqd.com.br/rest/v2/synthesize?text=${memoria.text2speech}&voice=adriana-highquality.voice`,
         nextquestion: 5,
     },
     {
         fato: () => `Nos Estados Unidos existem mais casas sem ninguém morando do que moradores de rua.`,
-        audio: () => `https://vaas108.cpqd.com.br/rest/v2/synthesize?text=%3Cprosody%20pitch%3D%22-40%25%22%3E${memoria.text2speech}%3C%2Fprosody%3E&voice=adriana-highquality.voice`,
+        audio: () => `https://vaas108.cpqd.com.br/rest/v2/synthesize?text=${memoria.text2speech}&voice=adriana-highquality.voice`,
         nextquestion: 5,
     },
     {
         fato: () => `A maioria dos banheiros em Hong Kong utilizam água do mar. Isso é feito para conservar a pouca quantidade de água doce que tem disponível.`,
-        audio: () => `https://vaas108.cpqd.com.br/rest/v2/synthesize?text=%3Cprosody%20pitch%3D%22-40%25%22%3E${memoria.text2speech}%3C%2Fprosody%3E&voice=adriana-highquality.voice`,
+        audio: () => `https://vaas108.cpqd.com.br/rest/v2/synthesize?text=${memoria.text2speech}&voice=adriana-highquality.voice`,
         nextquestion: 5,
     },
     {
         fato: () => `Cerca de 78% dos habitantes da Terra nunca viram neve na vida.`,
-        audio: () => `https://vaas108.cpqd.com.br/rest/v2/synthesize?text=%3Cprosody%20pitch%3D%22-40%25%22%3E${memoria.text2speech}%3C%2Fprosody%3E&voice=adriana-highquality.voice`,
+        audio: () => `https://vaas108.cpqd.com.br/rest/v2/synthesize?text=${memoria.text2speech}&voice=adriana-highquality.voice`,
         nextquestion: 5,
     },
     {
         fato: () => `Em média, cada pessoa perde 4kg de pele morta em um ano.`,
-        audio: () => `https://vaas108.cpqd.com.br/rest/v2/synthesize?text=%3Cprosody%20pitch%3D%22-40%25%22%3E${memoria.text2speech}%3C%2Fprosody%3E&voice=adriana-highquality.voice`,
+        audio: () => `https://vaas108.cpqd.com.br/rest/v2/synthesize?text=${memoria.text2speech}&voice=adriana-highquality.voice`,
         nextquestion: 5,
     },
     {
         fato: () => `Charles Osborne teve uma crise de soluços que durou, nada mais nada menos que, 69 anos. Começou em 1922, quando pesava um cerdo para sacrificá-lo e só parou quando ele já tinha 97 anos.`,
-        audio: () => `https://vaas108.cpqd.com.br/rest/v2/synthesize?text=%3Cprosody%20pitch%3D%22-40%25%22%3E${memoria.text2speech}%3C%2Fprosody%3E&voice=adriana-highquality.voice`,
+        audio: () => `https://vaas108.cpqd.com.br/rest/v2/synthesize?text=${memoria.text2speech}&voice=adriana-highquality.voice`,
         nextquestion: 5,
     },
     {
         fato: () => `O maior pênis registrado até hoje é de Jonah Falcon. Este, aliás, é um estadunidense de Nova York (EUA), com 34,29 cm.`,
-        audio: () => `https://vaas108.cpqd.com.br/rest/v2/synthesize?text=%3Cprosody%20pitch%3D%22-40%25%22%3E${memoria.text2speech}%3C%2Fprosody%3E&voice=adriana-highquality.voice`,
+        audio: () => `https://vaas108.cpqd.com.br/rest/v2/synthesize?text=${memoria.text2speech}&voice=adriana-highquality.voice`,
         nextquestion: 5,
     },
     {
         fato: () => `30% do sangue bombeado pelo coração vai direto para o cérebro.`,
-        audio: () => `https://vaas108.cpqd.com.br/rest/v2/synthesize?text=%3Cprosody%20pitch%3D%22-40%25%22%3E${memoria.text2speech}%3C%2Fprosody%3E&voice=adriana-highquality.voice`,
+        audio: () => `https://vaas108.cpqd.com.br/rest/v2/synthesize?text=${memoria.text2speech}&voice=adriana-highquality.voice`,
         nextquestion: 5,
     },
     {
         fato: () => `A decomposição do corpo humano começa apenas 4 minutos depois da morte.`,
-        audio: () => `https://vaas108.cpqd.com.br/rest/v2/synthesize?text=%3Cprosody%20pitch%3D%22-40%25%22%3E${memoria.text2speech}%3C%2Fprosody%3E&voice=adriana-highquality.voice`,
+        audio: () => `https://vaas108.cpqd.com.br/rest/v2/synthesize?text=${memoria.text2speech}&voice=adriana-highquality.voice`,
         nextquestion: 5,
     },
     {
         fato: () => `Beijar um bebê na orelha pode deixá-lo surdo.`,
-        audio: () => `https://vaas108.cpqd.com.br/rest/v2/synthesize?text=%3Cprosody%20pitch%3D%22-40%25%22%3E${memoria.text2speech}%3C%2Fprosody%3E&voice=adriana-highquality.voice`,
+        audio: () => `https://vaas108.cpqd.com.br/rest/v2/synthesize?text=${memoria.text2speech}&voice=adriana-highquality.voice`,
         nextquestion: 5,
     },
     {
         fato: () => `É mais provável que uma pessoa morra com um coco caindo sobre a sua cabeça do que por um ataque de tubarão.`,
-        audio: () => `https://vaas108.cpqd.com.br/rest/v2/synthesize?text=%3Cprosody%20pitch%3D%22-40%25%22%3E${memoria.text2speech}%3C%2Fprosody%3E&voice=adriana-highquality.voice`,
+        audio: () => `https://vaas108.cpqd.com.br/rest/v2/synthesize?text=${memoria.text2speech}&voice=adriana-highquality.voice`,
         nextquestion: 5,
     },
     {
         fato: () => `Fredric John Bauer foi o criador da lata das batatas Pringles. Quando ele morreu em 2008 suas cinzas foram colocadas em uma delas.`,
-        audio: () => `https://vaas108.cpqd.com.br/rest/v2/synthesize?text=%3Cprosody%20pitch%3D%22-40%25%22%3E${memoria.text2speech}%3C%2Fprosody%3E&voice=adriana-highquality.voice`,
+        audio: () => `https://vaas108.cpqd.com.br/rest/v2/synthesize?text=${memoria.text2speech}&voice=adriana-highquality.voice`,
         nextquestion: 5,
     },
     {
         fato: () => `Em Nova York (EUA) é proibido vender uma casa mal assombrada sem avisar ao comprador.`,
-        audio: () => `https://vaas108.cpqd.com.br/rest/v2/synthesize?text=%3Cprosody%20pitch%3D%22-40%25%22%3E${memoria.text2speech}%3C%2Fprosody%3E&voice=adriana-highquality.voice`,
+        audio: () => `https://vaas108.cpqd.com.br/rest/v2/synthesize?text=${memoria.text2speech}&voice=adriana-highquality.voice`,
         nextquestion: 5,
     },{
         fato: () => `No Japão você pode comprar um sorvete com sabor de enguia.`,
-        audio: () => `https://vaas108.cpqd.com.br/rest/v2/synthesize?text=%3Cprosody%20pitch%3D%22-40%25%22%3E${memoria.text2speech}%3C%2Fprosody%3E&voice=adriana-highquality.voice`,
+        audio: () => `https://vaas108.cpqd.com.br/rest/v2/synthesize?text=${memoria.text2speech}&voice=adriana-highquality.voice`,
         nextquestion: 5,
     },
     {
         fato: () => `Usain Bolt exige que todas as fotografias tiradas dele sejam realizadas na Jamaica, seu país de origem. Assim ele contribui economicamente para o seu país.`,
-        audio: () => `https://vaas108.cpqd.com.br/rest/v2/synthesize?text=%3Cprosody%20pitch%3D%22-40%25%22%3E${memoria.text2speech}%3C%2Fprosody%3E&voice=adriana-highquality.voice`,
+        audio: () => `https://vaas108.cpqd.com.br/rest/v2/synthesize?text=${memoria.text2speech}&voice=adriana-highquality.voice`,
         nextquestion: 5,
     },
     {
         fato: () => `Leonardo Di Caprio recebeu esse nome porque enquanto sua mãe observava um quadro de Leonardo Da Vinci, na Itália, ele deu um chute em sua barriga.`,
-        audio: () => `https://vaas108.cpqd.com.br/rest/v2/synthesize?text=%3Cprosody%20pitch%3D%22-40%25%22%3E${memoria.text2speech}%3C%2Fprosody%3E&voice=adriana-highquality.voice`,
+        audio: () => `https://vaas108.cpqd.com.br/rest/v2/synthesize?text=${memoria.text2speech}&voice=adriana-highquality.voice`,
         nextquestion: 5,
     },
     {
         fato: () => `Em Las Vegas você pode dirigir uma escavadora dentro de uma caixa de areia gigante. A atração faz parte de um parque temático da cidade.`,
-        audio: () => `https://vaas108.cpqd.com.br/rest/v2/synthesize?text=%3Cprosody%20pitch%3D%22-40%25%22%3E${memoria.text2speech}%3C%2Fprosody%3E&voice=adriana-highquality.voice`,
+        audio: () => `https://vaas108.cpqd.com.br/rest/v2/synthesize?text=${memoria.text2speech}&voice=adriana-highquality.voice`,
         nextquestion: 5,
     },
     {
         fato: () => `O único planeta do Sistema Solar que não tem nome de um deus, é o nosso.`,
-        audio: () => `https://vaas108.cpqd.com.br/rest/v2/synthesize?text=%3Cprosody%20pitch%3D%22-40%25%22%3E${memoria.text2speech}%3C%2Fprosody%3E&voice=adriana-highquality.voice`,
+        audio: () => `https://vaas108.cpqd.com.br/rest/v2/synthesize?text=${memoria.text2speech}&voice=adriana-highquality.voice`,
         nextquestion: 5,
     },
     {
         fato: () => `Um Boeing 747 levaria 120 bilhões de anos para cruzar a Via Láctea.`,
-        audio: () => `https://vaas108.cpqd.com.br/rest/v2/synthesize?text=%3Cprosody%20pitch%3D%22-40%25%22%3E${memoria.text2speech}%3C%2Fprosody%3E&voice=adriana-highquality.voice`,
+        audio: () => `https://vaas108.cpqd.com.br/rest/v2/synthesize?text=${memoria.text2speech}&voice=adriana-highquality.voice`,
         nextquestion: 5,
     },
     {
         fato: () => `Cientistas calcularam que se fosse escavado um túnel através do centro da Terra, e uma pessoa pulasse ali dentro, demoraria 42 minutos e 12 segundos para atravessá-lo por completo.`,
-        audio: () => `https://vaas108.cpqd.com.br/rest/v2/synthesize?text=%3Cprosody%20pitch%3D%22-40%25%22%3E${memoria.text2speech}%3C%2Fprosody%3E&voice=adriana-highquality.voice`,
+        audio: () => `https://vaas108.cpqd.com.br/rest/v2/synthesize?text=${memoria.text2speech}&voice=adriana-highquality.voice`,
         nextquestion: 5,
     },
     {
         fato: () => `De toda a vida animal que se desenvolveu no planeta, aproximadamente 80% têm 6 ou mais pernas.`,
-        audio: () => `https://vaas108.cpqd.com.br/rest/v2/synthesize?text=%3Cprosody%20pitch%3D%22-40%25%22%3E${memoria.text2speech}%3C%2Fprosody%3E&voice=adriana-highquality.voice`,
+        audio: () => `https://vaas108.cpqd.com.br/rest/v2/synthesize?text=${memoria.text2speech}&voice=adriana-highquality.voice`,
         nextquestion: 5,
     },
     {
         fato: () => `A pele de uma rã dourada venenosa possui toxinas suficientes para matar 100 pessoas.`,
-        audio: () => `https://vaas108.cpqd.com.br/rest/v2/synthesize?text=%3Cprosody%20pitch%3D%22-40%25%22%3E${memoria.text2speech}%3C%2Fprosody%3E&voice=adriana-highquality.voice`,
+        audio: () => `https://vaas108.cpqd.com.br/rest/v2/synthesize?text=${memoria.text2speech}&voice=adriana-highquality.voice`,
         nextquestion: 5,
     },
     {
         fato: () => `Os únicos mamíferos capazes de voar são os morcegos.`,
-        audio: () => `https://vaas108.cpqd.com.br/rest/v2/synthesize?text=%3Cprosody%20pitch%3D%22-40%25%22%3E${memoria.text2speech}%3C%2Fprosody%3E&voice=adriana-highquality.voice`,
+        audio: () => `https://vaas108.cpqd.com.br/rest/v2/synthesize?text=${memoria.text2speech}&voice=adriana-highquality.voice`,
         nextquestion: 5,
     },
     {
         fato: () => `A água-viva Turritopsis Nutricula é o único organismo na Terra que a Ciência reconhece como biologicamente imortal.`,
-        audio: () => `https://vaas108.cpqd.com.br/rest/v2/synthesize?text=%3Cprosody%20pitch%3D%22-40%25%22%3E${memoria.text2speech}%3C%2Fprosody%3E&voice=adriana-highquality.voice`,
+        audio: () => `https://vaas108.cpqd.com.br/rest/v2/synthesize?text=${memoria.text2speech}&voice=adriana-highquality.voice`,
         nextquestion: 5,
     },
     {
         fato: () => `Originalmente, Feng shui era a arte de escolher um local apropriado para sepulturas.`,
-        audio: () => `https://vaas108.cpqd.com.br/rest/v2/synthesize?text=%3Cprosody%20pitch%3D%22-40%25%22%3E${memoria.text2speech}%3C%2Fprosody%3E&voice=adriana-highquality.voice`,
+        audio: () => `https://vaas108.cpqd.com.br/rest/v2/synthesize?text=${memoria.text2speech}&voice=adriana-highquality.voice`,
         nextquestion: 5,
     },
     {
         fato: () => `A probabilidade de que o copo de água que você está bebendo contenha uma molécula de água que já tenha passado por um dinossauro é de cerca de 100%.`,
-        audio: () => `https://vaas108.cpqd.com.br/rest/v2/synthesize?text=%3Cprosody%20pitch%3D%22-40%25%22%3E${memoria.text2speech}%3C%2Fprosody%3E&voice=adriana-highquality.voice`,
+        audio: () => `https://vaas108.cpqd.com.br/rest/v2/synthesize?text=${memoria.text2speech}&voice=adriana-highquality.voice`,
         nextquestion: 5,
     },
     {
         fato: () => `Universidade de Oxford é mais antiga que o Império Asteca.`,
-        audio: () => `https://vaas108.cpqd.com.br/rest/v2/synthesize?text=%3Cprosody%20pitch%3D%22-40%25%22%3E${memoria.text2speech}%3C%2Fprosody%3E&voice=adriana-highquality.voice`,
+        audio: () => `https://vaas108.cpqd.com.br/rest/v2/synthesize?text=${memoria.text2speech}E&voice=adriana-highquality.voice`,
         nextquestion: 5,
     },
 ]
     
 var questionario = [     
     {
-        pergunta: () => `Oi! Tudo bem? Eu sou a ${memoria.nomerobo}!\nA primeira inteligência artificial travesti do mundo!\n Qual é o seu primeiro nome?`,
-        audio: () => `https://vaas108.cpqd.com.br/rest/v2/synthesize?text=%3Cprosody%20pitch%3D%22-40%25%22%3E${memoria.text2speech}%3C%2Fprosody%3E&voice=adriana-highquality.voice`,
+        pergunta: () => `Oi! Tudo bem? Eu sou a ${memoria.nomerobo}.\n Qual é o seu Nome?`,
+        audio: () => `https://vaas108.cpqd.com.br/rest/v2/synthesize?text=${memoria.text2speech}&voice=adriana-highquality.voice`,
         exibicao: "input",
         nomedememoria: "primeironome",
         nextquestion: 1,
     },
     {
-        pergunta: () => `Tudo bem, ${memoria.primeironome}?\n E qual é o seu segundo nome?`,
-        audio: () => `https://vaas108.cpqd.com.br/rest/v2/synthesize?text=%3Cprosody%20pitch%3D%22-40%25%22%3E${memoria.text2speech}%3C%2Fprosody%3E&voice=adriana-highquality.voice`,
+        pergunta: () => `Tudo bem, ${memoria.primeironome}?\n E qual é o seu sobrenome?`,
+        audio: () => `https://vaas108.cpqd.com.br/rest/v2/synthesize?text=${memoria.text2speech}&voice=adriana-highquality.voice`,
         exibicao: "input",
         nomedememoria: "segundonome",
         nextquestion: 2,
@@ -251,21 +251,21 @@ var questionario = [
     },
     {
         pergunta: () => `Legal ${memoria.primeironome} ${memoria.segundonome}! qual é o seu CPF?`,
-        audio: () => `https://vaas108.cpqd.com.br/rest/v2/synthesize?text=%3Cprosody%20pitch%3D%22-40%25%22%3E${memoria.text2speech}%3C%2Fprosody%3E&voice=adriana-highquality.voice`,
+        audio: () => `https://vaas108.cpqd.com.br/rest/v2/synthesize?text=${memoria.text2speech}&voice=adriana-highquality.voice`,
         exibicao: "inputcpf",
         nomedememoria: "numerocpf",
         nextquestion: 3,
     },
     {
         pergunta: () => `Digite uma senha.`,
-        audio: () => `https://vaas108.cpqd.com.br/rest/v2/synthesize?text=%3Cprosody%20pitch%3D%22-40%25%22%3E${memoria.text2speech}%3C%2Fprosody%3E&voice=adriana-highquality.voice`,
+        audio: () => `https://vaas108.cpqd.com.br/rest/v2/synthesize?text=${memoria.text2speech}&voice=adriana-highquality.voice`,
         exibicao: "inputpassword",
         nomedememoria: "senha",
         nextquestion: 4,
     },
     {
         pergunta: () =>`Vou te chamar só de ${memoria.primeironome}! Ok?`,
-        audio: () => `https://vaas108.cpqd.com.br/rest/v2/synthesize?text=%3Cprosody%20pitch%3D%22-40%25%22%3E${memoria.text2speech}%3C%2Fprosody%3E&voice=adriana-highquality.voice`,
+        audio: () => `https://vaas108.cpqd.com.br/rest/v2/synthesize?text=${memoria.text2speech}&voice=adriana-highquality.voice`,
         exibicao: "onlyoption",
         option1: "Ok",
         nomedememoria: "ignorarsegundonome",
@@ -274,43 +274,44 @@ var questionario = [
     
     {
         pergunta: () => `Aqui é você que manda!\nO que você quer fazer?`,
-        audio: () => `https://vaas108.cpqd.com.br/rest/v2/synthesize?text=%3Cprosody%20pitch%3D%22-40%25%22%3E${memoria.text2speech}%3C%2Fprosody%3E&voice=adriana-highquality.voice`,
+        audio: () => `https://vaas108.cpqd.com.br/rest/v2/synthesize?text=${memoria.text2speech}&voice=adriana-highquality.voice`,
         exibicao: "multioption",
         option1: "Ouvir Piada",
         option2: "Algo Interessante",
         option3: "Ver suas informações",
         option4: "Assistir um Video",
+        option5: "Texto em Fala.",
         
-        nextquestion1: 6,
-        nextquestion2: 7,
-        nextquestion3: 8,
-        nextquestion4: 9,
+        // nextquestion1: 6,
+        // nextquestion2: 7,
+        // nextquestion3: 8,
+        // nextquestion4: 9,
     },
     // ATE AQUI DEUS AJUDOU!
     {
         pergunta: () => "Era uma vez um pintinho sem cu!\n Foi peidar e explodiu!",
-        audio: () => `https://vaas108.cpqd.com.br/rest/v2/synthesize?text=%3Cprosody%20pitch%3D%22-40%25%22%3E${memoria.text2speech}%3C%2Fprosody%3E&voice=adriana-highquality.voice`,
+        audio: () => `https://vaas108.cpqd.com.br/rest/v2/synthesize?text=${memoria.text2speech}&voice=adriana-highquality.voice`,
         exibicao: "onlyoption",
         option1: "Legal",
         nextquestion: 5,
     },
     {
         pergunta: () => "Em cima das caravelas portuguesas existia uma pequena cesta por onde a tripulação observava o horizonte em busca de sinal de terra. Por causa do balanço do mar este local era muito instavel e balançava muito, fazendo com que fosse uma função que ninguem desejava, tornando-se quase um castigo. O nome dessa pequena cesta era 'caralho'.Por isso como forma de castigo mandamos alguem pro caralho!",
-        audio: () => `https://vaas108.cpqd.com.br/rest/v2/synthesize?text=%3Cprosody%20pitch%3D%22-40%25%22%3E${memoria.text2speech}%3C%2Fprosody%3E&voice=adriana-highquality.voice`,
+        audio: () => `https://vaas108.cpqd.com.br/rest/v2/synthesize?text=${memoria.text2speech}&voice=adriana-highquality.voice`,
         exibicao: "onlyoption",
         option1: "Legal",
         nextquestion: 5,
     },
     {
         pergunta: () => "Essas são suas informações!",
-        audio: () => `https://vaas108.cpqd.com.br/rest/v2/synthesize?text=%3Cprosody%20pitch%3D%22-40%25%22%3E${memoria.text2speech}%3C%2Fprosody%3E&voice=adriana-highquality.voice`,
+        audio: () => `https://vaas108.cpqd.com.br/rest/v2/synthesize?text=${memoria.text2speech}&voice=adriana-highquality.voice`,
         exibicao: "infooption",
         option1: "Ok",
         nextquestion: 5,
     },
     {
         pergunta: () => "Esse video é muito Legal.",
-        audio: () => `https://vaas108.cpqd.com.br/rest/v2/synthesize?text=%3Cprosody%20pitch%3D%22-40%25%22%3E${memoria.text2speech}%3C%2Fprosody%3E&voice=adriana-highquality.voice`,
+        audio: () => `https://vaas108.cpqd.com.br/rest/v2/synthesize?text=${memoria.text2speech}&voice=adriana-highquality.voice`,
         exibicao: "video",
         option1: "Voltar",
         nextquestion: 5,
@@ -320,7 +321,6 @@ var questionario = [
 
 // FUNÇÃO DE ANALISE DE TIPO DE INTERAÇÃO
 function seletor(question){
-    // $("#audio").html(`<audio hidden="True" controls="" autoplay="" name="media"><source src="${question.audio()}" type="audio/x-wav"></audio>`)
     if (question.exibicao == "piadaoption"){
         perguntapiadaoption()
         return 0
@@ -368,6 +368,7 @@ function perguntamultioption(question){
     <button class="btnresposta" id="algoint">${question.option2}</button>
     <button class="btnresposta" id="info">${question.option3}</button>
     <button class="btnresposta" id="videobtn">${question.option4}</button>
+    <button class="btnresposta" id="text2speechbtn">${question.option5}</button>
     `)
     $("#piada").click(function(){
         perguntapiadaoption()
@@ -384,6 +385,9 @@ function perguntamultioption(question){
         var idnext = question.nextquestion4
         encoderaudio(questionario[idnext])
         seletor(questionario[idnext])
+    });
+    $("#text2speechbtn").click(function(){
+        opcaotext2apeech()
     });
 }
 function perguntaonlyoption(question){
@@ -409,7 +413,7 @@ function perguntaoption2(question){
 }
 function perguntainputtext(question){
     $("#question").text(`${question.pergunta()}`)
-    $("#resposta").html(`<input type="text" id="inputnome"><button id="inputok">>></button>`)
+    $("#resposta").html(`<input type="text" id="inputnome" placeholder="Digite aqui..."><button id="inputok">>></button>`)
     $("#inputok").click(function(){
         var nome = $("#inputnome").val()
         var nomechave = question.nomedememoria
@@ -420,7 +424,7 @@ function perguntainputtext(question){
 }
 function perguntainputpassword(question){
     $("#question").text(`${question.pergunta()}`)
-    $("#resposta").html(`<input type="password" id="inputpassword"><button id="inputok">>></button>`)
+    $("#resposta").html(`<input type="password" id="inputpassword" placeholder="Digite sua senha..."><button id="inputok">>></button>`)
     $("#inputok").click(function(){
         var senha = $("#inputpassword").val()
         var nomechave = question.nomedememoria
@@ -526,6 +530,21 @@ function perguntafatooption(){
         perguntafatooption()
     });
 }
+function opcaotext2apeech(){
+    $("#question").text(`Digite o que gostaria de escutar.`)
+    $("#resposta").html(`<input type="text" id="inputnome" placeholder="Digite aqui..."><button id="inputok">>></button><button class="btnresposta" id="voltar">Voltar</button>`)
+    encodertexto2audio($("#question").text())
+    $("#audio").html(`<audio src="https://vaas108.cpqd.com.br/rest/v2/synthesize?text=${memoria.text2speech}&voice=adriana-highquality.voice" hidden="true" controls autoplay></audio>`)
+    
+    $("#inputok").click(function(){
+        encodertexto2audio($("#inputnome").val())
+        $("#audio").html(`<audio src="https://vaas108.cpqd.com.br/rest/v2/synthesize?text=${memoria.text2speech}&voice=adriana-highquality.voice" hidden="true" controls autoplay></audio>`)
+    });
+    $("#voltar").click(function(){
+        encoderaudio(questionario[5])
+        seletor(questionario[5])
+    });
+}
 
 // FUNÇÕES DE SELEÇÃO
 function encoderaudiofatos(lista){
@@ -552,6 +571,15 @@ function encoderaudiopiadas(lista){
     $("#audio").html(`<audio src="${lista.audio()}" hidden="true" controls autoplay></audio>`)
 
 }
+function encodertexto2audio(texto){
+    var encoder = encodeURIComponent(texto);
+    var audiochave = "text2speech"
+    memoria[audiochave] = encoder
+    $("#audio").html(`<audio src="${listapiadas.audio}" hidden="true" controls autoplay></audio>`)
+
+
+}
+
 function encoderaudio(question){
     var texto = `${question.pergunta()}`
     var encoder = encodeURIComponent(texto);
@@ -563,6 +591,6 @@ function encoderaudio(question){
 }
 // READY!  QUANDO A PAGINA ABRE RODA AS SEGUINTES FUNCOES NA ORDEM DADA.
 $( document ).ready(function() {
-    encoderaudio(questionario[0])
     seletor(questionario[0])
+    encoderaudio(questionario[0])
   });

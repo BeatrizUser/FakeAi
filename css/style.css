@@ -58,6 +58,7 @@ input{
     width: auto;
     height: 35px;
     box-shadow: rgb(59, 59, 59) 1px 2px 5px;
+    word-break: break-word;
 }
 input:-webkit-autofill,
 input:-webkit-autofill:hover, 
@@ -130,6 +131,10 @@ button{
     box-shadow: rgb(59, 59, 59) 1px 2px 5px;
     font-size: 18px;
     letter-spacing: -2px;
+}
+.inputt2s{
+    height: 80px;
+
 }
 #hiddenpass{
     background: #292929;
