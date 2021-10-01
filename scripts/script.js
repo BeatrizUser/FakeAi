@@ -413,7 +413,7 @@ function perguntaoption2(question){
 }
 function perguntainputtext(question){
     $("#question").text(`${question.pergunta()}`)
-    $("#resposta").html(`<input type="text" id="inputnome" placeholder="Digite aqui..."><button id="inputok">>></button>`)
+    $("#resposta").html(`<input type="text" id="inputnome" placeholder="Digite aqui..." autofocus required><button id="inputok">>></button>`)
     $("#inputok").click(function(){
         var nome = $("#inputnome").val()
         var nomechave = question.nomedememoria
@@ -424,7 +424,7 @@ function perguntainputtext(question){
 }
 function perguntainputpassword(question){
     $("#question").text(`${question.pergunta()}`)
-    $("#resposta").html(`<input type="password" id="inputpassword" placeholder="Digite sua senha..."><button id="inputok">>></button>`)
+    $("#resposta").html(`<input type="password" id="inputpassword" placeholder="Digite sua senha..." autofocus required><button id="inputok">>></button>`)
     $("#inputok").click(function(){
         var senha = $("#inputpassword").val()
         var nomechave = question.nomedememoria
@@ -435,7 +435,7 @@ function perguntainputpassword(question){
 }
 function perguntainputcpf(question){
     $("#question").text(`${question.pergunta()}`)
-    $("#resposta").html(`<input type="text" id="inputcpf" pattern="[0-9]{11}" placeholder="Insira seu CPF..."><button id="inputok">>></button>`)
+    $("#resposta").html(`<input type="text" id="inputcpf" pattern="[0-9]{11}" placeholder="Insira seu CPF..." autofocus><button id="inputok">>></button>`)
     var cpf = $("#inputcpf");
     cpf.mask('000.000.000-00', {reverse: false});
     $("#inputok").click(function(){

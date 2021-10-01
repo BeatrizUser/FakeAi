@@ -53,12 +53,16 @@ input{
     border-radius: 5px 0px 0px 10px;
     margin-top: 8px;
     color: rgb(61, 61, 61);
-    text-transform: capitalize;
     padding:5px;
     width: auto;
     height: 35px;
-    box-shadow: rgb(59, 59, 59) 1px 2px 5px;
-    word-break: break-word;
+    box-shadow: 1px 2px 8px #000;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    hyphens: auto;
+}
+.fixinput{
+    height: auto;
 }
 input:-webkit-autofill,
 input:-webkit-autofill:hover, 
@@ -128,7 +132,7 @@ button{
     padding: 2px 10px 2px 10px;
     font-weight: 500;
     margin-left: -1px;
-    box-shadow: rgb(59, 59, 59) 1px 2px 5px;
+    box-shadow: 1px 2px 8px #000;
     font-size: 18px;
     letter-spacing: -2px;
 }
