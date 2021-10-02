@@ -282,10 +282,10 @@ var questionario = [
         option4: "Assistir um Video",
         option5: "Texto em Fala.",
         
-        // nextquestion1: 6,
-        // nextquestion2: 7,
-        // nextquestion3: 8,
-        // nextquestion4: 9,
+        nextquestion1: 6,
+        nextquestion2: 7,
+        nextquestion3: 8,
+        nextquestion4: 9,
     },
     // ATE AQUI DEUS AJUDOU!
     {
