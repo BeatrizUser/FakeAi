@@ -273,7 +273,7 @@ var questionario = [
     },
     
     {
-        pergunta: () => `Aqui é você que manda!\nO que você quer fazer?`,
+        pergunta: () => `O que você quer fazer, ${memoria.primeironome}?`,
         audio: () => `https://vaas108.cpqd.com.br/rest/v2/synthesize?text=${memoria.text2speech}&voice=adriana-highquality.voice`,
         exibicao: "multioption",
         option1: "Ouvir Piada",
@@ -281,26 +281,10 @@ var questionario = [
         option3: "Ver suas informações",
         option4: "Assistir um Video",
         option5: "Texto em Fala.",
+        option6: "Uma opnião.",
         
-        nextquestion1: 6,
-        nextquestion2: 7,
-        nextquestion3: 8,
-        nextquestion4: 9,
-    },
-    // ATE AQUI DEUS AJUDOU!
-    {
-        pergunta: () => "Era uma vez um pintinho sem cu!\n Foi peidar e explodiu!",
-        audio: () => `https://vaas108.cpqd.com.br/rest/v2/synthesize?text=${memoria.text2speech}&voice=adriana-highquality.voice`,
-        exibicao: "onlyoption",
-        option1: "Legal",
-        nextquestion: 5,
-    },
-    {
-        pergunta: () => "Em cima das caravelas portuguesas existia uma pequena cesta por onde a tripulação observava o horizonte em busca de sinal de terra. Por causa do balanço do mar este local era muito instavel e balançava muito, fazendo com que fosse uma função que ninguem desejava, tornando-se quase um castigo. O nome dessa pequena cesta era 'caralho'.Por isso como forma de castigo mandamos alguem pro caralho!",
-        audio: () => `https://vaas108.cpqd.com.br/rest/v2/synthesize?text=${memoria.text2speech}&voice=adriana-highquality.voice`,
-        exibicao: "onlyoption",
-        option1: "Legal",
-        nextquestion: 5,
+        nextquestion3: 6,
+        nextquestion4: 7,
     },
     {
         pergunta: () => "Essas são suas informações!",
@@ -369,6 +353,7 @@ function perguntamultioption(question){
     <button class="btnresposta" id="info">${question.option3}</button>
     <button class="btnresposta" id="videobtn">${question.option4}</button>
     <button class="btnresposta" id="text2speechbtn">${question.option5}</button>
+    <button class="btnresposta" id="opiniaobtn">${question.option6}</button>
     `)
     $("#piada").click(function(){
         perguntapiadaoption()
@@ -388,6 +373,9 @@ function perguntamultioption(question){
     });
     $("#text2speechbtn").click(function(){
         opcaotext2apeech()
+    });
+    $("#opiniaobtn").click(function(){
+        opcaoopiniao()
     });
 }
 function perguntaonlyoption(question){
@@ -544,6 +532,30 @@ function opcaotext2apeech(){
         encoderaudio(questionario[5])
         seletor(questionario[5])
     });
+}
+function opcaoopiniao(){
+    // formar frases a partir de randon de array
+    var parte1 = ['Porque ','Quando ','Sempre ', 'Eu e '];
+    var parte2 = ['Jesus ','Hittler ','Moises ', 'Inês Brasil '];
+    var parte3 = ['come ','mata ','ressucita ', 'abençoa '];
+    var parte4 = ['Tiririca','Oprah','Obama', 'Xuxa'];
+    var parte5 = ['.','!', '?','.'];
+    
+    const random = Math.floor(Math.random() * parte1.length)
+
+    var frase = (parte1[random]+parte2[random]+parte3[random]+parte4[random]+parte5[random])
+
+    $("#question").text(frase)
+    $("#resposta").html(`<button class="btnresposta" id="ok">Ok</button><button class="btnresposta" id="outro">Outra</button>`)
+    $("#ok").click(function(){
+        encoderaudio(questionario[5])
+        seletor(questionario[5])
+    });
+    $("#outro").click(function(){
+        opcaoopiniao()
+    });
+
+    
 }
 
 // FUNÇÕES DE SELEÇÃO
