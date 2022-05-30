@@ -4,6 +4,6 @@ Projeto baseado em um Sistema de PErguntas e respostas, para aprofundar conhecim
 
 ### Captura de tela
 
-![](./screenshot.png)
+![](./capturadetela.png)
 
 Link - [Site do Projeto FakeAi](https://beatrizuser.github.io/FakeAi/)
